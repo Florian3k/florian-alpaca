@@ -22,10 +22,11 @@ input_img: Image.Image = Image.open('template1_64x64.png').convert("RGB")
 assert input_img.size == (64, 64)
 assert_all_colors_allowed(input_img)
 
-alpaca_color = (83, 83, 83)
+alpaca_color = 83, 83, 83
+bg_color = 240, 240, 240
 change_colors = [
-    ((255, 255, 255), (255, 255, 255)),  # background color
-    ((0, 0, 0), alpaca_color)  # alpaca color
+    ((255, 255, 255), bg_color),
+    ((0, 0, 0), alpaca_color)
 ]
 
 data = np.array(input_img)
@@ -45,6 +46,5 @@ for mask, target_color in masks_and_colors:
 
 colored_image = Image.fromarray(data)
 output_img = colored_image.resize((512, 512), Image.NEAREST)
-assert_all_colors_allowed(output_img, {(255, 255, 255), alpaca_color})
 
 output_img.save("build/florian-alpaca.png")
