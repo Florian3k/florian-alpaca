@@ -46,4 +46,4 @@ colored_image = Image.fromarray(data)
 output_img = colored_image.resize((512, 512), Image.NEAREST)
 assert_all_colors_allowed(output_img, {(255, 255, 255), (53, 53, 53)})
 
-output_img.save("build/test1.png")
+output_img.save("build/florian-alpaca.png")
